@@ -7,6 +7,7 @@ interface ICustomFormProps {
   formName: string;
   children: ReactNode;
   onFinish: (values: string) => void;
+  disabled?: boolean;
   layout?: FormLayout;
 }
 
@@ -14,6 +15,7 @@ const CustomForm: React.FC<ICustomFormProps> = ({
   formName,
   children,
   onFinish,
+  disabled,
   layout = 'inline',
 }) => {
   const [form] = Form.useForm();
@@ -22,8 +24,8 @@ const CustomForm: React.FC<ICustomFormProps> = ({
     <Form name={formName} form={form} onFinish={onFinish} autoComplete="off" layout={layout}>
       {children}
       <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Submit
+        <Button type="primary" htmlType="submit" disabled={disabled}>
+          SEARCH
         </Button>
       </Form.Item>
     </Form>
