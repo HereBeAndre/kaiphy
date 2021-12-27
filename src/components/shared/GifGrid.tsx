@@ -4,6 +4,8 @@ import { Row, Col } from 'antd';
 
 import { TGifObject } from '../../schemas/gifData_d';
 
+import './GifGrid.css';
+
 interface IGifGridData {
   data: TGifObject[];
   isLoaded?: boolean;
@@ -15,18 +17,23 @@ const GifGrid: React.FC<IGifGridData> = ({ data, isLoaded, error }) => {
 
   const getGifUrl = (gifObject: TGifObject) => gifObject?.images?.fixed_height?.url;
 
-  const renderGifData = (gifData: TGifObject[]) => {
+  const renderGifData = (
+    gifData: TGifObject[],
+    start: number,
+    end: number | undefined = undefined,
+  ) => {
     // if (error) {
     //   return <div>Error: {error.message}</div>;
     // }
     // if (!isLoaded) {
     //   return <div>Loading...</div>;
     // }
-    return gifData?.map((gifObject: TGifObject) => {
+    const slicedData = gifData?.slice(start, end);
+    return slicedData?.map((gifObject: TGifObject) => {
       return (
-        <Col className="gutter-row" span={4} key={gifObject?.id}>
-          <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} key={gifObject?.id} />
-        </Col>
+        // <Col className="gutter-row" span={4} key={gifObject?.id}>
+        <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} key={gifObject?.id} />
+        // </Col>
       );
     });
   };
@@ -36,7 +43,13 @@ const GifGrid: React.FC<IGifGridData> = ({ data, isLoaded, error }) => {
   }, [data]);
 
   return data?.length ? (
-    <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 28 }}>{renderGifData(gridData)}</Row>
+    <div className="row">
+      <div className="column">{renderGifData(gridData, 0, 2)}</div>
+      <div className="column">{renderGifData(gridData, 2, 4)}</div>
+      <div className="column">{renderGifData(gridData, 4, 6)}</div>
+      <div className="column">{renderGifData(gridData, 6, 8)}</div>
+      <div className="column">{renderGifData(gridData, 8, 10)}</div>
+    </div>
   ) : null;
 };
 
