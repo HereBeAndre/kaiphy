@@ -1,10 +1,11 @@
 import './App.css';
+import MainPage from './components/pages/MainPage';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Kaiphy</p>
+        <MainPage />
       </header>
     </div>
   );
