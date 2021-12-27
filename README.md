@@ -1,6 +1,45 @@
-# Getting Started with Create React App
+# Kaiphy
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> A Single Page Application that accepts a search term through a form and displays GIFS based on the search term using the GIPHY API.
+
+## Table of Contents
+
+- [Kaiphy](#kaiphy)
+  - [Table of Contents](#table-of-contents)
+  - [General Information](#general-information)
+  - [Technologies Used](#technologies-used)
+  - [API](#api)
+  - [Install](#install)
+  - [Available Scripts](#available-scripts)
+    - [`npm start`](#npm-start)
+    - [`npm test`](#npm-test)
+    - [`npm run build`](#npm-run-build)
+    - [`npm run eject`](#npm-run-eject)
+  - [Features](#features)
+  - [Screenshots](#screenshots)
+  - [Room for Improvement](#room-for-improvement)
+  - [License](#license)
+
+## General Information
+
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Technologies Used
+
+> - **node** - version 14.17.5 (https://nodejs.org/it/)
+> - **typescript** - version 4.4.3 (https://github.com/microsoft/TypeScript)
+> - **react** - version 17.0.2 (https://github.com/facebook/react)
+> - **axios** - version 0.24.0 (https://npmjs.com/package/axios)
+> - **antd** - version 4.16.13 (https://ant.design/)
+
+## API
+
+> - **GIPHY API** - (https://developers.giphy.com/docs/api/#quick-start-guide)
+
+## Install
+
+The complete list of dependencies is included in `./package-lock.json`.\
+Run `npm install` to install all dependencies.
 
 ## Available Scripts
 
@@ -39,8 +78,30 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> - Search for any GIF provided by GIPHY API by typing a keyword of your choice inside the form.
+> - In order to speed up the development process, no async-handler library (i.e. redux-thunk, reduz-saga) was added. The async logic is placed inside the Hooks, as per React's official docs.
+> - The response data provided by GIPHY API is stored in the component's state. For the sake of the challenge and for the aforementioned point, no state management library was added.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Screenshots
+
+WIP
+
+## Room for Improvement
+
+Todo:
+
+- [ ] Dockerize the application;
+- [ ] Implement Webpack config by adding aliased paths;
+- [ ] Replace CSS files with CSS modules;
+- [ ] Keep input form data on browser refresh
+- [ ] Install and configure `husky` (https://github.com/typicode/husky).
+
+Known bugs:
+
+- [ ] There seems to be a bug related to process.env. Needs further investigation, might be related to webpack.
+
+## License
+
+This project is distributed under Open Source license.

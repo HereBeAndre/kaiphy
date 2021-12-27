@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import { Row, Col } from 'antd';
-
 import { TGifObject } from '../../schemas/gifData_d';
 
 import './GifGrid.css';
