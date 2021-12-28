@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 
 import { Button, Form } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import { FormLayout } from 'antd/lib/form/Form';
 
 interface ICustomFormProps {
@@ -24,7 +25,7 @@ const CustomForm: React.FC<ICustomFormProps> = ({
     <Form name={formName} form={form} onFinish={onFinish} autoComplete="off" layout={layout}>
       {children}
       <Form.Item>
-        <Button type="primary" htmlType="submit" disabled={disabled}>
+        <Button htmlType="submit" icon={<SearchOutlined />} disabled={disabled}>
           SEARCH
         </Button>
       </Form.Item>
