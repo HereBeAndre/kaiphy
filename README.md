@@ -87,7 +87,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Screenshots
 
-WIP
+![Before search](./src/resources/kaiphy_screenshot_1.png)
+![After successful search](./src/resources/kaiphy_screenshot_2.png)
 
 ## Room for Improvement
 
