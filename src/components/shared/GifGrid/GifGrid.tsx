@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import { TGifObject } from '../../schemas/gifData_d';
+import { TGifObject } from '../../../schemas/gifData_d';
 
 import './GifGrid.css';
 
@@ -28,11 +28,7 @@ const GifGrid: React.FC<IGifGridData> = ({ data, isLoaded, error }) => {
     // }
     const slicedData = gifData?.slice(start, end);
     return slicedData?.map((gifObject: TGifObject) => {
-      return (
-        // <Col className="gutter-row" span={4} key={gifObject?.id}>
-        <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} key={gifObject?.id} />
-        // </Col>
-      );
+      return <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} key={gifObject?.id} />;
     });
   };
 
@@ -40,6 +36,7 @@ const GifGrid: React.FC<IGifGridData> = ({ data, isLoaded, error }) => {
     setGridData(data);
   }, [data]);
 
+  // TODO: Find more efficient solution to render GIFs in responsive manner
   return data?.length ? (
     <div className="row">
       <div className="column">{renderGifData(gridData, 0, 2)}</div>

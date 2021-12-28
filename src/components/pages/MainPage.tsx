@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 
-import { Form, Input } from 'antd';
+import { Form, Input, Row } from 'antd';
 
 import giphyApi from '../../api/giphyApi';
 
+import { TGifDataServerResponse, TGifObject } from '../../schemas/gifData_d';
+
+import BaseLayout from '../layout/BaseLayout/BaseLayout';
+
 import CustomForm from '../shared/CustomForm';
-import GifGrid from '../shared/GifGrid';
+import GifGrid from '../shared/GifGrid/GifGrid';
 
 import { MAX_GIF_OBJECTS } from '../../utils/constants';
-import { TGifDataServerResponse, TGifObject } from '../../schemas/gifData_d';
 
 const MainPage = () => {
   const [giphyQuery, setGiphyQuery] = useState<string>('');
@@ -50,17 +53,19 @@ const MainPage = () => {
   };
 
   return (
-    <>
-      <CustomForm formName="giphy-form" onFinish={onGiphyFormFinish} disabled={disabledSubmit}>
-        <Form.Item
-          name="keyword"
-          // rules={[{ required: true, message: 'Please input your username!' }]}
-        >
-          <Input placeholder="Search GIPHY" onChange={onGiphyInputChange} allowClear />
-        </Form.Item>
-      </CustomForm>
+    <BaseLayout
+      header={
+        <Row justify="center" align="middle" style={{ marginTop: '16px' }}>
+          <CustomForm formName="giphy-form" onFinish={onGiphyFormFinish} disabled={disabledSubmit}>
+            <Form.Item name="keyword">
+              <Input placeholder="Search GIPHY" onChange={onGiphyInputChange} allowClear />
+            </Form.Item>
+          </CustomForm>
+        </Row>
+      }
+    >
       <GifGrid data={gifData} />
-    </>
+    </BaseLayout>
   );
 };
 

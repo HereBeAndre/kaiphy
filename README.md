@@ -80,8 +80,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Features
 
-> - Search for any GIF provided by GIPHY API by typing a keyword of your choice inside the form.
-> - In order to speed up the development process, no async-handler library (i.e. redux-thunk, reduz-saga) was added. The async logic is placed inside the Hooks, as per React's official docs.
+> - Search for any GIF provided by GIPHY API by typing a keyword of your choice inside the form;
+> - GIFs are rendered in a responsive manner;
+> - In order to speed up the development process, no async-handler library (i.e. redux-thunk, reduz-saga) was added. The async logic is placed inside the Hooks, as per React's official docs;
 > - The response data provided by GIPHY API is stored in the component's state. For the sake of the challenge and for the aforementioned point, no state management library was added.
 
 ## Screenshots
@@ -94,13 +95,17 @@ Todo:
 
 - [ ] Dockerize the application;
 - [ ] Implement Webpack config by adding aliased paths;
-- [ ] Replace CSS files with CSS modules;
-- [ ] Keep input form data on browser refresh
-- [ ] Install and configure `husky` (https://github.com/typicode/husky).
+- [ ] Replace CSS files and inline styles with CSS modules;
+- [ ] Keep current GIFs data on browser refresh;
+- [ ] Find more efficient solution to render GIFs in responsive manner;
+- [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
+- [ ] Implement i18n.
 
 Known bugs:
 
-- [ ] There seems to be a bug related to process.env. Needs further investigation, might be related to webpack.
+- [ ] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
+- [ ] Currently the meta status related to the API call is not handled properly;
+- [ ] Fix navbar responsive behavior for mobile;
 
 ## License
 
