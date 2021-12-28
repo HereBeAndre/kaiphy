@@ -98,6 +98,7 @@ Todo:
 - [ ] Implement Webpack config by adding aliased paths;
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
+- [ ] Find efficient way to handle meta status - i.e. show spinner when request to server is still pending;
 - [ ] Find more efficient solution to render GIFs in responsive manner;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
 - [ ] Implement i18n.
