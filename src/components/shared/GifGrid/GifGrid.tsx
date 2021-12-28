@@ -4,13 +4,14 @@ import { TGifObject } from '../../../schemas/gifData_d';
 
 import './GifGrid.css';
 
+// TODO: Find efficient way to handle meta status - isLoaded and error
 interface IGifGridData {
   data: TGifObject[];
   isLoaded?: boolean;
   error?: Error;
 }
 
-const GifGrid: React.FC<IGifGridData> = ({ data, isLoaded, error }) => {
+const GifGrid: React.FC<IGifGridData> = ({ data }) => {
   const [gridData, setGridData] = useState<TGifObject[]>([]);
 
   const getGifUrl = (gifObject: TGifObject) => gifObject?.images?.fixed_height?.url;

@@ -18,7 +18,7 @@ const MainPage = () => {
   const [disabledSubmit, setDisabledSubmit] = useState<boolean>(true);
   const [gifData, setGifData] = useState<TGifObject[]>([]);
 
-  // TODO: Find efficient way to handle meta status
+  // TODO: Find efficient way to handle meta status - isLoaded and error
   useEffect(() => {
     !!giphyQuery &&
       giphyApi
