@@ -98,7 +98,7 @@ Todo:
 - [ ] Implement Webpack config by adding aliased paths;
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
-- [ ] Find efficient way to handle meta status - i.e. show spinner when request to server is still pending;
+- [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails - implemented in `post-deadline-implementations` branch, currently not merged into master;
 - [ ] Find more efficient solution to render GIFs in responsive manner;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
 - [ ] Implement i18n.
@@ -106,7 +106,7 @@ Todo:
 Known bugs:
 
 - [ ] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
-- [ ] Currently the meta status related to the API call is not handled properly;
+- [x] Currently the meta status related to the API call is not handled properly - implemented in `post-deadline-implementations` branch, currently not merged into master;
 - [ ] Fix navbar responsive behavior for mobile;
 
 ## License
