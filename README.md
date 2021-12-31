@@ -92,21 +92,28 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Room for Improvement
 
+Improvements/Bug fixes implemented post-deadline in `post-deadline-implementations` branch, currently not merged into master:
+
+- [x] Currently the meta status related to the API call is not handled properly;
+- [x] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
+  > - **UPDATE**:
+        This bug is related to `create-react-app`. Basically hot reload works, but the aforementioned error comes up and the page becomes unresponsive, with manual refresh being the only solution.
+        This happens because now CRA uses `react-error-overlay` in webpack.
+        As a temporary fix suggested in this thread (https://github.com/facebook/create-react-app/issues/11771) on CRA GitHub's repository, `react-error-overlay@6.0.9` has been added among the dev-dependencies;
+- [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails.
+
 Todo:
 
 - [ ] Dockerize the application;
 - [ ] Implement Webpack config by adding aliased paths;
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
-- [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails - implemented in `post-deadline-implementations` branch, currently not merged into master;
 - [ ] Find more efficient solution to render GIFs in responsive manner;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
 - [ ] Implement i18n.
 
 Known bugs:
 
-- [ ] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
-- [x] Currently the meta status related to the API call is not handled properly - implemented in `post-deadline-implementations` branch, currently not merged into master;
 - [ ] Fix navbar responsive behavior for mobile;
 
 ## License
