@@ -17,9 +17,11 @@ const MainPage = () => {
   const [giphyQuery, setGiphyQuery] = useState<string>('');
   const [disabledSubmit, setDisabledSubmit] = useState<boolean>(true);
   const [gifData, setGifData] = useState<TGifObject[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-  // TODO: Find efficient way to handle meta status - isLoaded and error
   useEffect(() => {
+    setIsLoading(!!giphyQuery);
     !!giphyQuery &&
       giphyApi
         .get<string, TGifDataServerResponse>('/gifs/search', {
@@ -31,15 +33,16 @@ const MainPage = () => {
         })
         .then(
           (result) => {
-            // setIsLoaded(true);
+            setIsLoading(false);
             setGifData(result?.data?.data);
           },
           /* Handle errors here instead of a catch() block so that we don't swallow
           exceptions from actual bugs in component */
           (err) => {
-            // setIsLoaded(true);
-            // setError(new Error(err));
-            console.log(err);
+            setIsLoading(false);
+            // Normally we'd use the Error constructor with name, message and optionally stack
+            // GIPHY API returns an object containing only message though, so we extract just that
+            setErrorMessage(err?.message);
           },
         );
   }, [giphyQuery]);
@@ -64,7 +67,7 @@ const MainPage = () => {
         </Row>
       }
     >
-      <GifGrid data={gifData} />
+      {isLoading ? 'Loading...' : <GifGrid data={gifData} error={errorMessage} />}
     </BaseLayout>
   );
 };

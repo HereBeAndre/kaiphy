@@ -1,33 +1,40 @@
 import { useState, useEffect } from 'react';
 
+import { Empty } from 'antd';
+
 import { TGifObject } from '../../../schemas/gifData_d';
+
+import { showNotificationPopup } from '../../../utils/function';
 
 import './GifGrid.css';
 
-// TODO: Find efficient way to handle meta status - isLoaded and error
 interface IGifGridData {
   data: TGifObject[];
-  isLoaded?: boolean;
-  error?: Error;
+  error: string;
 }
 
-const GifGrid: React.FC<IGifGridData> = ({ data }) => {
+const GifGrid: React.FC<IGifGridData> = ({ data, error }) => {
   const [gridData, setGridData] = useState<TGifObject[]>([]);
 
   const getGifUrl = (gifObject: TGifObject) => gifObject?.images?.fixed_height?.url;
+
+  const handleError = (err: string) => {
+    if (err)
+      return (
+        <div>
+          <Empty />
+        </div>
+      );
+
+    return null;
+  };
 
   const renderGifData = (
     gifData: TGifObject[],
     start: number,
     end: number | undefined = undefined,
   ) => {
-    // if (error) {
-    //   return <div>Error: {error.message}</div>;
-    // }
-    // if (!isLoaded) {
-    //   return <div>Loading...</div>;
-    // }
-    const slicedData = gifData?.slice(start, end);
+    const slicedData = gifData ? gifData.slice(start, end) : [];
     return slicedData?.map((gifObject: TGifObject) => {
       return <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} key={gifObject?.id} />;
     });
@@ -36,6 +43,10 @@ const GifGrid: React.FC<IGifGridData> = ({ data }) => {
   useEffect(() => {
     setGridData(data);
   }, [data]);
+
+  useEffect(() => {
+    error && showNotificationPopup('error', 'Oops, something went wrong', 'Please try again...');
+  }, [error]);
 
   // TODO: Find more efficient solution to render GIFs in responsive manner
   return data?.length ? (
@@ -46,7 +57,9 @@ const GifGrid: React.FC<IGifGridData> = ({ data }) => {
       <div className="column">{renderGifData(gridData, 6, 8)}</div>
       <div className="column">{renderGifData(gridData, 8, 10)}</div>
     </div>
-  ) : null;
+  ) : (
+    handleError(error)
+  );
 };
 
 export default GifGrid;
