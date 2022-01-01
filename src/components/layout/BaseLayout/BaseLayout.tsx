@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 import { Layout } from 'antd';
 
-import CustomFooter from '../Footer/Footer';
+import CustomFooter from 'components/layout/Footer/Footer';
 
 import './BaseLayout.css';
 

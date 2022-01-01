@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 
 import { Empty } from 'antd';
 
-import { TGifObject } from '../../../schemas/gifData_d';
+import { TGifObject } from 'schemas/gifData_d';
 
-import { showNotificationPopup } from '../../../utils/function';
+import { showNotificationPopup } from 'utils/function';
 
 import './GifGrid.css';
 
