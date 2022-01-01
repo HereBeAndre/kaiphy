@@ -101,10 +101,10 @@ Improvements/Bug fixes implemented post-deadline in `post-deadline-implementatio
         This happens because now CRA uses `react-error-overlay` in webpack.
         As a temporary fix suggested in this thread (https://github.com/facebook/create-react-app/issues/11771) on CRA GitHub's repository, `react-error-overlay@6.0.9` has been added among the dev-dependencies;
 - [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails.
+- [x] Dockerize the application;
 
 Todo:
 
-- [ ] Dockerize the application;
 - [ ] Implement Webpack config by adding aliased paths;
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
