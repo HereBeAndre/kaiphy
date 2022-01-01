@@ -28,6 +28,7 @@
 ## Technologies Used
 
 > - **node** - version 14.17.5 (https://nodejs.org/it/)
+> - **Docker** - version 20.10.10 (https://www.docker.com/)
 > - **typescript** - version 4.4.3 (https://github.com/microsoft/TypeScript)
 > - **react** - version 17.0.2 (https://github.com/facebook/react)
 > - **axios** - version 0.24.0 (https://npmjs.com/package/axios)
