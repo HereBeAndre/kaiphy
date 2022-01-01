@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react';
 
 import { Form, Input, Row } from 'antd';
 
-import giphyApi from '../../api/giphyApi';
+import giphyApi from 'api/giphyApi';
 
-import { TGifDataServerResponse, TGifObject } from '../../schemas/gifData_d';
+import { TGifDataServerResponse, TGifObject } from 'schemas/gifData_d';
 
-import BaseLayout from '../layout/BaseLayout/BaseLayout';
+import BaseLayout from 'components/layout/BaseLayout/BaseLayout';
 
-import CustomForm from '../shared/CustomForm';
-import GifGrid from '../shared/GifGrid/GifGrid';
+import CustomForm from 'components/shared/CustomForm';
+import GifGrid from 'components/shared/GifGrid/GifGrid';
 
-import { MAX_GIF_OBJECTS } from '../../utils/constants';
+import { MAX_GIF_OBJECTS } from 'utils/constants';
 
 const MainPage = () => {
   const [giphyQuery, setGiphyQuery] = useState<string>('');

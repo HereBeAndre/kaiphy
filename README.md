@@ -15,6 +15,7 @@
     - [`npm test`](#npm-test)
     - [`npm run build`](#npm-run-build)
     - [`npm run eject`](#npm-run-eject)
+  - [Run with Docker](#run-with-docker)
   - [Features](#features)
   - [Screenshots](#screenshots)
   - [Room for Improvement](#room-for-improvement)
@@ -78,6 +79,11 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Run with Docker
+
+Please run `docker run --name kaiphy -d -p 3000:3000 kaiphy:latest` to run the container; the application is available on port 3000.
+You can also run `docker ps` to see if the container is up and running.
+
 ## Features
 
 > - Search for any GIF provided by GIPHY API by typing a keyword of your choice inside the form;
@@ -92,8 +98,9 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Room for Improvement
 
-Improvements/Bug fixes implemented post-deadline in `post-deadline-implementations` branch, currently not merged into master:
+Improvements/Bug fixes implemented post-deadline in `post-deadline-implementations` branch, currently not merged into `master`:
 
+- [x] Dockerize the application;
 - [x] Currently the meta status related to the API call is not handled properly;
 - [x] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
   > - **UPDATE**:
@@ -101,11 +108,10 @@ Improvements/Bug fixes implemented post-deadline in `post-deadline-implementatio
         This happens because now CRA uses `react-error-overlay` in webpack.
         As a temporary fix suggested in this thread (https://github.com/facebook/create-react-app/issues/11771) on CRA GitHub's repository, `react-error-overlay@6.0.9` has been added among the dev-dependencies;
 - [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails.
-- [x] Dockerize the application;
+- [x] Implement Webpack config by adding aliased paths.
 
 Todo:
 
-- [ ] Implement Webpack config by adding aliased paths;
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
 - [ ] Find more efficient solution to render GIFs in responsive manner;
