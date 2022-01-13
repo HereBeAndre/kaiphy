@@ -1,6 +1,8 @@
-import { Layout } from 'antd';
 import { ReactNode } from 'react';
-import CustomFooter from '../Footer/Footer';
+
+import { Layout } from 'antd';
+
+import CustomFooter from 'components/layout/Footer/Footer';
 
 import './BaseLayout.css';
 
@@ -14,7 +16,7 @@ interface IBaseLayoutProps {
 const BaseLayout: React.FC<IBaseLayoutProps> = ({ header, children }) => (
   <Layout className="base-layout base-layout-main">
     <Header style={{ width: '100%', backgroundColor: '#5c217f' }}>{header}</Header>
-    <Content>{children}</Content>
+    <Content className="base-layout-content">{children}</Content>
     <Footer style={{ width: '100%', backgroundColor: '#5c217f' }}>
       <CustomFooter />
     </Footer>

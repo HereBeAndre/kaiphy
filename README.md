@@ -15,6 +15,7 @@
     - [`npm test`](#npm-test)
     - [`npm run build`](#npm-run-build)
     - [`npm run eject`](#npm-run-eject)
+  - [Run with Docker](#run-with-docker)
   - [Features](#features)
   - [Screenshots](#screenshots)
   - [Room for Improvement](#room-for-improvement)
@@ -27,6 +28,7 @@
 ## Technologies Used
 
 > - **node** - version 14.17.5 (https://nodejs.org/it/)
+> - **Docker** - version 20.10.10 (https://www.docker.com/)
 > - **typescript** - version 4.4.3 (https://github.com/microsoft/TypeScript)
 > - **react** - version 17.0.2 (https://github.com/facebook/react)
 > - **axios** - version 0.24.0 (https://npmjs.com/package/axios)
@@ -78,6 +80,16 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Run with Docker
+
+You can run `docker build -t kaiphy:latest .` to build the Docker image.
+Then you can run `docker run --name kaiphy -d -p 3000:3000 kaiphy:latest` to build the container for the image; the application will be available on port 3000.
+Other useful commands are:
+
+- `docker stop kaiphy` to stop the containter;
+- `docker start kaiphy` to start the containter;
+- `docker ps` to check the status of the container.
+
 ## Features
 
 > - Search for any GIF provided by GIPHY API by typing a keyword of your choice inside the form;
@@ -92,21 +104,30 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Room for Improvement
 
+Done:
+
+- [x] Dockerize the application;
+- [x] Fix Docker instructions in README.md;
+- [x] Currently the meta status related to the API call is not handled properly;
+- [x] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
+  > - **UPDATE**:
+        This bug is related to `create-react-app`. Basically hot reload works, but the aforementioned error comes up and the page becomes unresponsive, with manual refresh being the only solution.
+        This happens because now CRA uses `react-error-overlay` in webpack.
+        As a temporary fix suggested in this thread (https://github.com/facebook/create-react-app/issues/11771) on CRA GitHub's repository, `react-error-overlay@6.0.9` has been added among the dev-dependencies;
+- [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails.
+- [x] Implement Webpack config by adding base path;
+- [x] Find more efficient solution to render GIFs in responsive manner.
+
 Todo:
 
-- [ ] Dockerize the application;
-- [ ] Implement Webpack config by adding aliased paths;
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
-- [ ] Find efficient way to handle meta status - i.e. show spinner when request to server is still pending;
-- [ ] Find more efficient solution to render GIFs in responsive manner;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
-- [ ] Implement i18n.
+- [ ] Implement i18n;
+- [ ] Add debounce function when fetching GIFs.
 
 Known bugs:
 
-- [ ] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
-- [ ] Currently the meta status related to the API call is not handled properly;
 - [ ] Fix navbar responsive behavior for mobile;
 
 ## License

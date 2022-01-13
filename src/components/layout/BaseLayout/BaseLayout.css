@@ -12,3 +12,8 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.base-layout-content {
+  display: flex;
+  align-items: center;
+}

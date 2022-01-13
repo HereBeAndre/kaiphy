@@ -1,6 +1,6 @@
 import { Row } from 'antd';
 
-import giphyLogo from '../../../resources/giphyLogo.png';
+import giphyLogo from 'resources/giphyLogo.png';
 
 const CustomFooter = () => (
   <Row justify="center" align="middle">
