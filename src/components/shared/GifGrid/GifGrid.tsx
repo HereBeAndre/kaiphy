@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { Empty } from 'antd';
 
@@ -14,8 +14,6 @@ interface IGifGridData {
 }
 
 const GifGrid: React.FC<IGifGridData> = ({ data, error }) => {
-  const [gridData, setGridData] = useState<TGifObject[]>([]);
-
   const getGifUrl = (gifObject: TGifObject) => gifObject?.images?.fixed_height?.url;
 
   const handleError = (err: string) => {
@@ -29,37 +27,21 @@ const GifGrid: React.FC<IGifGridData> = ({ data, error }) => {
     return null;
   };
 
-  const renderGifData = (
-    gifData: TGifObject[],
-    start: number,
-    end: number | undefined = undefined,
-  ) => {
-    const slicedData = gifData ? gifData.slice(start, end) : [];
-    return slicedData?.map((gifObject: TGifObject) => {
-      return <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} key={gifObject?.id} />;
+  const renderGifData = (gifData: TGifObject[]) => {
+    return gifData?.map((gifObject: TGifObject) => {
+      return (
+        <div className="column" key={gifObject?.id}>
+          <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} />
+        </div>
+      );
     });
   };
-
-  useEffect(() => {
-    setGridData(data);
-  }, [data]);
 
   useEffect(() => {
     error && showNotificationPopup('error', 'Oops, something went wrong', 'Please try again...');
   }, [error]);
 
-  // TODO: Find more efficient solution to render GIFs in responsive manner
-  return data?.length ? (
-    <div className="row">
-      <div className="column">{renderGifData(gridData, 0, 2)}</div>
-      <div className="column">{renderGifData(gridData, 2, 4)}</div>
-      <div className="column">{renderGifData(gridData, 4, 6)}</div>
-      <div className="column">{renderGifData(gridData, 6, 8)}</div>
-      <div className="column">{renderGifData(gridData, 8, 10)}</div>
-    </div>
-  ) : (
-    handleError(error)
-  );
+  return data?.length ? <div className="row">{renderGifData(data)}</div> : handleError(error);
 };
 
 export default GifGrid;

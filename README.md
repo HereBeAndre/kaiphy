@@ -109,15 +109,17 @@ Improvements/Bug fixes implemented post-deadline in `post-deadline-implementatio
         This happens because now CRA uses `react-error-overlay` in webpack.
         As a temporary fix suggested in this thread (https://github.com/facebook/create-react-app/issues/11771) on CRA GitHub's repository, `react-error-overlay@6.0.9` has been added among the dev-dependencies;
 - [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails.
-- [x] Implement Webpack config by adding aliased paths.
+- [x] Implement Webpack config by adding aliased paths;
+- [x] Find more efficient solution to render GIFs in responsive manner.
 
 Todo:
 
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
-- [ ] Find more efficient solution to render GIFs in responsive manner;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
-- [ ] Implement i18n.
+- [ ] Implement i18n;
+- [ ] Fix Docker instructions in README.md;
+- [ ] Add debounce function when fetching GIFs.
 
 Known bugs:
 

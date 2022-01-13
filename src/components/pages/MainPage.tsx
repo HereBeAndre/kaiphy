@@ -20,35 +20,39 @@ const MainPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
+  // TODO: Add debounce function
   useEffect(() => {
-    setIsLoading(!!giphyQuery);
     !!giphyQuery &&
-      giphyApi
-        .get<string, TGifDataServerResponse>('/gifs/search', {
-          params: {
-            q: giphyQuery,
-            api_key: process.env.REACT_APP_GIPHY_API_KEY || '',
-            limit: MAX_GIF_OBJECTS,
-          },
-        })
-        .then(
-          (result) => {
-            setIsLoading(false);
-            setGifData(result?.data?.data);
-          },
-          /* Handle errors here instead of a catch() block so that we don't swallow
+      setTimeout(() => {
+        setIsLoading(!!giphyQuery);
+        giphyApi
+          .get<string, TGifDataServerResponse>('/gifs/search', {
+            params: {
+              q: giphyQuery,
+              api_key: process.env.REACT_APP_GIPHY_API_KEY || '',
+              limit: MAX_GIF_OBJECTS,
+            },
+          })
+          .then(
+            (result) => {
+              setIsLoading(false);
+              setGifData(result?.data?.data);
+            },
+            /* Handle errors here instead of a catch() block so that we don't swallow
           exceptions from actual bugs in component */
-          (err) => {
-            setIsLoading(false);
-            // Normally we'd use the Error constructor with name, message and optionally stack
-            // GIPHY API returns an object containing only message though, so we extract just that
-            setErrorMessage(err?.message);
-          },
-        );
+            (err) => {
+              setIsLoading(false);
+              // Normally we'd use the Error constructor with name, message and optionally stack
+              // GIPHY API returns an object containing only message though, so we extract just that
+              setErrorMessage(err?.message);
+            },
+          );
+      }, 3000);
   }, [giphyQuery]);
 
   const onGiphyInputChange = (e) => {
     setDisabledSubmit(!e.target.value.length);
+    setGiphyQuery(e.target.value);
   };
 
   const onGiphyFormFinish = (value: string) => {
