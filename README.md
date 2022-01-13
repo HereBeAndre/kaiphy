@@ -82,8 +82,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Run with Docker
 
-Please run `docker run --name kaiphy -d -p 3000:3000 kaiphy:latest` to run the container; the application is available on port 3000.
-You can also run `docker ps` to see if the container is up and running.
+You can run `docker build -t kaiphy:latest .` to build the Docker image.
+Then you can run `docker run --name kaiphy -d -p 3000:3000 kaiphy:latest` to build the container for the image; the application will be available on port 3000.
+Other useful commands are:
+
+- `docker stop kaiphy` to stop the containter;
+- `docker start kaiphy` to start the containter;
+- `docker ps` to check the status of the container.
 
 ## Features
 
@@ -102,6 +107,7 @@ You can also run `docker ps` to see if the container is up and running.
 Improvements/Bug fixes implemented post-deadline in `post-deadline-implementations` branch, currently not merged into `master`:
 
 - [x] Dockerize the application;
+- [x] Fix Docker instructions in README.md;
 - [x] Currently the meta status related to the API call is not handled properly;
 - [x] There seems to be a bug related to `process.env`. Needs further investigation, might be related to webpack;
   > - **UPDATE**:
@@ -109,7 +115,7 @@ Improvements/Bug fixes implemented post-deadline in `post-deadline-implementatio
         This happens because now CRA uses `react-error-overlay` in webpack.
         As a temporary fix suggested in this thread (https://github.com/facebook/create-react-app/issues/11771) on CRA GitHub's repository, `react-error-overlay@6.0.9` has been added among the dev-dependencies;
 - [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails.
-- [x] Implement Webpack config by adding aliased paths;
+- [x] Implement Webpack config by adding base path;
 - [x] Find more efficient solution to render GIFs in responsive manner.
 
 Todo:
@@ -118,7 +124,6 @@ Todo:
 - [ ] Keep current GIFs data on browser refresh;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
 - [ ] Implement i18n;
-- [ ] Fix Docker instructions in README.md;
 - [ ] Add debounce function when fetching GIFs.
 
 Known bugs:
