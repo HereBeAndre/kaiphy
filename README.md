@@ -118,10 +118,10 @@ Done:
 - [x] Implement Webpack config by adding base path;
 - [x] Find more efficient solution to render GIFs in responsive manner;
 - [x] Add debounce function when fetching GIFs.
+- [x] Replace CSS files and inline styles with CSS modules;
 
 Todo:
 
-- [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
 - [ ] Implement i18n.

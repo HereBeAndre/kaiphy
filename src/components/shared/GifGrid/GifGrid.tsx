@@ -6,7 +6,7 @@ import { TGifObject } from 'schemas/gifData_d';
 
 import { showNotificationPopup } from 'utils/function';
 
-import './GifGrid.css';
+import styles from './GifGrid.module.scss';
 
 interface IGifGridData {
   data: TGifObject[];
@@ -30,8 +30,12 @@ const GifGrid: React.FC<IGifGridData> = ({ data, error }) => {
   const renderGifData = (gifData: TGifObject[]) => {
     return gifData?.map((gifObject: TGifObject) => {
       return (
-        <div className="column" key={gifObject?.id}>
-          <img src={getGifUrl(gifObject)} alt={gifObject?.title || 'gif'} />
+        <div className={styles.Column} key={gifObject?.id}>
+          <img
+            src={getGifUrl(gifObject)}
+            alt={gifObject?.title || 'gif'}
+            className={styles.ImageGif}
+          />
         </div>
       );
     });
@@ -41,7 +45,11 @@ const GifGrid: React.FC<IGifGridData> = ({ data, error }) => {
     error && showNotificationPopup('error', 'Oops, something went wrong', 'Please try again...');
   }, [error]);
 
-  return data?.length ? <div className="row">{renderGifData(data)}</div> : handleError(error);
+  return data?.length ? (
+    <div className={styles.Row}>{renderGifData(data)}</div>
+  ) : (
+    handleError(error)
+  );
 };
 
 export default GifGrid;

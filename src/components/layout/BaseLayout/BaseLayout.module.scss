@@ -1,8 +1,8 @@
-.base-layout {
+.BaseLayout {
   text-align: center;
 }
 
-.base-layout-main {
+.BaseLayoutMain {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -13,7 +13,12 @@
   color: white;
 }
 
-.base-layout-content {
+.BaseLayoutContent {
   display: flex;
   align-items: center;
+}
+
+.HeaderAndFooterStyle {
+  width: 100%;
+  background-color: #5c217f;
 }
