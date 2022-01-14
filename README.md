@@ -116,19 +116,20 @@ Done:
         As a temporary fix suggested in this thread (https://github.com/facebook/create-react-app/issues/11771) on CRA GitHub's repository, `react-error-overlay@6.0.9` has been added among the dev-dependencies;
 - [x] Find efficient way to handle meta status - i.e. show loading when API call is pending and error when it fails.
 - [x] Implement Webpack config by adding base path;
-- [x] Find more efficient solution to render GIFs in responsive manner.
+- [x] Find more efficient solution to render GIFs in responsive manner;
+- [x] Add debounce function when fetching GIFs.
 
 Todo:
 
 - [ ] Replace CSS files and inline styles with CSS modules;
 - [ ] Keep current GIFs data on browser refresh;
 - [ ] Install and configure `husky` for pre-commit checks (https://github.com/typicode/husky);
-- [ ] Implement i18n;
-- [ ] Add debounce function when fetching GIFs.
+- [ ] Implement i18n.
 
 Known bugs:
 
-- [ ] Fix navbar responsive behavior for mobile;
+- [ ] When input field is empty, an API call with query as empty string is performed;
+- [ ] Fix navbar responsive behavior for mobile.
 
 ## License
 
