@@ -4,7 +4,7 @@ import { Layout } from 'antd';
 
 import CustomFooter from 'components/layout/Footer/Footer';
 
-import './BaseLayout.css';
+import styles from './BaseLayout.module.scss';
 
 const { Header, Content, Footer } = Layout;
 
@@ -14,10 +14,10 @@ interface IBaseLayoutProps {
 }
 
 const BaseLayout: React.FC<IBaseLayoutProps> = ({ header, children }) => (
-  <Layout className="base-layout base-layout-main">
-    <Header style={{ width: '100%', backgroundColor: '#5c217f' }}>{header}</Header>
-    <Content className="base-layout-content">{children}</Content>
-    <Footer style={{ width: '100%', backgroundColor: '#5c217f' }}>
+  <Layout className={`${styles.BaseLayout} ${styles.BaseLayoutMain}`}>
+    <Header className={styles.HeaderAndFooterStyle}>{header}</Header>
+    <Content className={styles.BaseLayoutContent}>{children}</Content>
+    <Footer className={styles.HeaderAndFooterStyle}>
       <CustomFooter />
     </Footer>
   </Layout>
