@@ -7,9 +7,10 @@ import { FormLayout } from 'antd/lib/form/Form';
 interface ICustomFormProps {
   formName: string;
   children: ReactNode;
-  onFinish: (values: string) => void;
+  onFinish?: (values: string) => void;
   disabled?: boolean;
   layout?: FormLayout;
+  showSubmitButton?: boolean;
 }
 
 const CustomForm: React.FC<ICustomFormProps> = ({
@@ -18,6 +19,7 @@ const CustomForm: React.FC<ICustomFormProps> = ({
   onFinish,
   disabled,
   layout = 'inline',
+  showSubmitButton = false,
 }) => {
   const [form] = Form.useForm();
 
@@ -25,9 +27,11 @@ const CustomForm: React.FC<ICustomFormProps> = ({
     <Form name={formName} form={form} onFinish={onFinish} autoComplete="off" layout={layout}>
       {children}
       <Form.Item>
-        <Button htmlType="submit" icon={<SearchOutlined />} disabled={disabled}>
-          SEARCH
-        </Button>
+        {showSubmitButton && (
+          <Button htmlType="submit" icon={<SearchOutlined />} disabled={disabled}>
+            SEARCH
+          </Button>
+        )}
       </Form.Item>
     </Form>
   );
